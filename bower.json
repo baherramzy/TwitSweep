@@ -1,0 +1,32 @@
+{
+  "name": "TwitSweep",
+  "authors": [
+    "Baher Ramzy <baherramzy@gmail.com>"
+  ],
+  "description": "A tool that allows you to clean up your follower and followee list based on various criteria",
+  "main": "",
+  "keywords": [
+    "Twitter",
+    "Follower",
+    "Mute",
+    "Inactive",
+    "Block"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6"
+  }
+}
