@@ -1,4 +1,5 @@
 var express = require('express');
+var async = require('async');
 var Twitter = require('twitter');
 var util = require('util');
 
@@ -12,24 +13,44 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-client.get('mutes/users/list', function(error, data, response) {
-	if(error) throw JSON.stringify(error);
+var mutedUsers = [];
+var blockedUsers = [];
 
-	app.get('/', function(req, res) {
-		var mutedUsers = [];
+app.get('/', function(req, res) {
+	async.series([
+		function(asyncTaskDone) {
+			// Muted
+			client.get('mutes/users/list', {include_entities: false, skip_status: true}, function(error, data, response) {
+				if(error) throw JSON.stringify(error);
 
-		for(var index in data.users) {
-			mutedUsers.push(data.users[index].screen_name);
+				for(var index in data.users) {
+					mutedUsers.push(data.users[index].screen_name);
+				}
+
+				asyncTaskDone();
+			});
+		},
+		function(asyncTaskDone) {
+			// Blocked
+			client.get('blocks/list', {include_entities: false, skip_status: true}, function(error, data, response) {
+				if(error) throw JSON.stringify(error);
+
+				for(var index in data.users) {
+					blockedUsers.push(data.users[index].screen_name);
+				}
+
+				asyncTaskDone();
+			});
+		},
+		function(asyncTaskDone) {
+			res.render('home', {
+				muted: JSON.stringify(mutedUsers),
+				blocked: JSON.stringify(blockedUsers)
+			});
+
+			asyncTaskDone();
 		}
-		
-
-		res.render('home', {
-			muted: JSON.stringify(mutedUsers)
-		});
-	});
-
-	// console.log(JSON.stringify(tweets));
-	// console.log(JSON.stringify(response));
+	]);
 });
 
 app.listen(3000, function() {
