@@ -1,0 +1,14 @@
+.box {
+	h2 {
+		text-align: center;
+	}
+	&.muted {
+		background-color: pink;
+		color: darken(pink, 20%);
+	}
+
+	&.blocked {
+		background-color: #A3E3FF;
+		color: darken(#A3E3FF, 40%);
+	}
+}

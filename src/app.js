@@ -16,6 +16,9 @@ var client = new Twitter({
 var mutedUsers = [];
 var blockedUsers = [];
 
+app.use('/css', express.static('src/css'));
+app.use('/css', express.static('src/components/bootstrap/dist/css'));
+
 app.get('/', function(req, res) {
 	async.series([
 		function(asyncTaskDone) {

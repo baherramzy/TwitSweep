@@ -24,9 +24,5 @@
   "dependencies": {
     "jquery": "^2.2.4",
     "bootstrap": "^3.3.6"
-  },
-  "devDependencies": {
-    "jquery": "^2.2.4",
-    "bootstrap": "^3.3.6"
   }
 }
