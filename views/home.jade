@@ -2,13 +2,29 @@
 html(lang="en")
 	head
 		meta(charset="UTF-8")
-		title Hello World!
+		title TwitSweep
 		link(href="css/bootstrap.min.css", rel="stylesheet")
 		link(href="css/style.css", rel="stylesheet")
 	body
-		div(class="box muted")
-			h2 Muted
-			p #{muted}
-		div(class="box blocked")
-			h2 Blocked
-			p #{blocked}
+		.container
+			.row
+				h1.app-heading.text-center TwitSweep
+			.row
+				.username-input-container.text-center
+					input(type="text", placeholder="Your username...")
+					button Sweep Me!
+			.row
+				.box.muted.col-sm-6.text-center
+					h2 Muted
+					each profile in muted
+						.profile-container.text-center
+							img(src="#{profile.img}", alt="#{profile.username}")
+							p #{profile.username}
+							button Unmute
+				.box.blocked.col-sm-6.text-center
+					h2 Blocked
+					each profile in blocked
+						.profile-container.text-center
+							img(src="#{profile.img}", alt="#{profile.username}")
+							p #{profile.username}
+							button Unblock

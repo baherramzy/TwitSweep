@@ -13,13 +13,13 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var mutedUsers = [];
-var blockedUsers = [];
-
 app.use('/css', express.static('src/css'));
 app.use('/css', express.static('src/components/bootstrap/dist/css'));
 
 app.get('/', function(req, res) {
+	var mutedUsers = [];
+	var blockedUsers = [];
+
 	async.series([
 		function(asyncTaskDone) {
 			// Muted
@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
 				if(error) throw JSON.stringify(error);
 
 				for(var index in data.users) {
-					mutedUsers.push(data.users[index].screen_name);
+					mutedUsers.push({username: data.users[index].screen_name, img: data.users[index].profile_image_url});
 				}
 
 				asyncTaskDone();
@@ -39,7 +39,7 @@ app.get('/', function(req, res) {
 				if(error) throw JSON.stringify(error);
 
 				for(var index in data.users) {
-					blockedUsers.push(data.users[index].screen_name);
+					blockedUsers.push({username: data.users[index].screen_name, img: data.users[index].profile_image_url});
 				}
 
 				asyncTaskDone();
@@ -47,8 +47,8 @@ app.get('/', function(req, res) {
 		},
 		function(asyncTaskDone) {
 			res.render('home', {
-				muted: JSON.stringify(mutedUsers),
-				blocked: JSON.stringify(blockedUsers)
+				muted: mutedUsers,
+				blocked: blockedUsers
 			});
 
 			asyncTaskDone();

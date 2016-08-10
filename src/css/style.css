@@ -1,2 +1,2 @@
-@import url(../components/bootstrap/dist/css/bootstrap.min.css);.box h2{text-align:center}.box.muted{background-color:pink;color:#ff5a77}.box.blocked{background-color:#A3E3FF;color:#0095d6}
+@import url(../components/bootstrap/dist/css/bootstrap.min.css);.username-input-container{margin:10px 0}.box h2{text-align:center}.box .profile-container{display:inline-block;width:150px;padding:25px;border-width:1px;border-style:solid;margin:3px}.box.muted{background-color:pink;color:#ff5a77}.box.muted .profile-container{border-color:#ff5a77}.box.blocked{background-color:#A3E3FF;color:#0095d6}.box.blocked .profile-container{border-color:#0095d6}
 /*# sourceMappingURL=style.css.map */

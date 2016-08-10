@@ -3,4 +3,4 @@ node_modules
 .sass-cache
 dist/
 src/components
-src/style.css.map
+src/css/style.css.map

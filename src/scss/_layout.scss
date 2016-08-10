@@ -1,14 +1,36 @@
+.username-input-container {
+	margin: 10px 0;
+}
+
 .box {
 	h2 {
 		text-align: center;
 	}
+
+	.profile-container {
+		display: inline-block;
+		width: 150px;
+		padding: 25px;
+		border-width: 1px;
+		border-style: solid;
+		margin: 3px;
+	}
+
 	&.muted {
 		background-color: pink;
 		color: darken(pink, 20%);
+
+		.profile-container {
+			border-color: darken(pink, 20%);
+		}
 	}
 
 	&.blocked {
 		background-color: #A3E3FF;
 		color: darken(#A3E3FF, 40%);
+
+		.profile-container {
+			border-color: darken(#A3E3FF, 40%);
+		}
 	}
 }
