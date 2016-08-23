@@ -13,8 +13,16 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
+// Serve virtual CSS directory 
 app.use('/css', express.static('src/css'));
 app.use('/css', express.static('src/components/bootstrap/dist/css'));
+
+// Serve virtual fonts directory
+app.use('/fonts', express.static('src/fonts'));
+
+// Serve virtual JS directory
+app.use('/js', express.static('src/components/jquery/dist'));
+app.use('/js', express.static('src/js'));
 
 app.get('/', function(req, res) {
 	var mutedUsers = [];
@@ -27,7 +35,10 @@ app.get('/', function(req, res) {
 				if(error) throw JSON.stringify(error);
 
 				for(var index in data.users) {
-					mutedUsers.push({username: data.users[index].screen_name, img: data.users[index].profile_image_url});
+					mutedUsers.push({
+						username: data.users[index].screen_name, 
+						img: data.users[index].profile_image_url
+					});
 				}
 
 				asyncTaskDone();
@@ -39,7 +50,10 @@ app.get('/', function(req, res) {
 				if(error) throw JSON.stringify(error);
 
 				for(var index in data.users) {
-					blockedUsers.push({username: data.users[index].screen_name, img: data.users[index].profile_image_url});
+					blockedUsers.push({
+						username: data.users[index].screen_name, 
+						img: data.users[index].profile_image_url
+					});
 				}
 
 				asyncTaskDone();

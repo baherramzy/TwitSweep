@@ -13,6 +13,8 @@ html(lang="en")
 				.username-input-container.text-center
 					input(type="text", placeholder="Your username...")
 					button Sweep Me!
+
+
 			.row
 				.box.muted.col-sm-6.text-center
 					h2 Muted
@@ -20,11 +22,19 @@ html(lang="en")
 						.profile-container.text-center
 							img(src="#{profile.img}", alt="#{profile.username}")
 							p #{profile.username}
-							button Unmute
+							button.mute-toggle Unmute
+								i.material-icons mic
+							button.block-toggle Block
+								i.material-icons block
 				.box.blocked.col-sm-6.text-center
 					h2 Blocked
 					each profile in blocked
 						.profile-container.text-center
 							img(src="#{profile.img}", alt="#{profile.username}")
 							p #{profile.username}
-							button Unblock
+							button.mute-toggle Mute
+								i.material-icons mic off
+							button.block-toggle Unblock
+								i.material-icons check_circle
+	script(src="js/jquery.min.js")
+	script(src="js/script.js")
