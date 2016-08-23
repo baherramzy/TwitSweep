@@ -1,3 +1,39 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'),
+	   local('MaterialIcons-Regular'),
+	   url('../fonts/MaterialIcons-Regular.woff2') format('woff2'),
+	   url('../fonts/MaterialIcons-Regular.woff') format('woff'),
+	   url('../fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
 .username-input-container {
 	margin: 10px 0;
 }
@@ -17,20 +53,20 @@
 	}
 
 	&.muted {
-		background-color: pink;
-		color: darken(pink, 20%);
+		background-color: $pink;
+		color: darken($pink, 20%);
 
 		.profile-container {
-			border-color: darken(pink, 20%);
+			border-color: darken($pink, 20%);
 		}
 	}
 
 	&.blocked {
-		background-color: #A3E3FF;
-		color: darken(#A3E3FF, 40%);
+		background-color: $blue;
+		color: darken($blue, 40%);
 
 		.profile-container {
-			border-color: darken(#A3E3FF, 40%);
+			border-color: darken($blue, 40%);
 		}
 	}
 }
